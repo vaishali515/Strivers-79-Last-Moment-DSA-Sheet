@@ -1,0 +1,33 @@
+// 2 ^ 2 = 0
+// given array - [ 4 2 2 6 4]
+let assume till index 0 to 3 the xor is XR , and the xor for index 0 is x , for index 1 to 3 is k , then 
+ x ^ k = XR
+taking k xor both sides..
+x ^ k ^k = XR ^ k
+x = XR ^ k
+
+int subarraysWithXorK(vector<int> a, int k) {
+    int n = a.size(); //size of the given array.
+    int xr = 0;
+    map<int, int> mpp; //declaring the map.
+    mpp[xr]++; //setting the value of 0.
+    int cnt = 0;
+
+    for (int i = 0; i < n; i++) {
+        // prefix XOR till index i:
+        xr = xr ^ a[i];
+
+        //By formula: x = xr^k:
+        int x = xr ^ k;
+
+        // add the occurrence of xr^k
+        // to the count:
+        cnt += mpp[x];
+
+        // Insert the prefix xor till index i
+        // into the map:
+        mpp[xr]++;
+    }
+    return cnt;
+}
+
