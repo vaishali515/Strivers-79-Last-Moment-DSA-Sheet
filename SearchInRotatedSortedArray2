@@ -6,7 +6,7 @@ public:
         {
             int mid = (high + low)/2;
             if(nums[mid]== target) return true;
-              if(nums[low]==nums[mid] && nums[high]==nums[mid]) {low++ ; high--;}
+            if(nums[low]==nums[mid] && nums[high]==nums[mid]) {low++ ; high--;} // this is beacause of duplicates elements in an array...
            else if(nums[low]<=nums[mid])
             {
                 if(target>= nums[low] && target<nums[mid])
